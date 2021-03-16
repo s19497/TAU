@@ -26,14 +26,11 @@ class NineGag(TestWebsite):
         login_button_2 = self.driver.find_element_by_css_selector('#login-email .btn')
         login_button_2.click()
 
-    def test_successful_login(self):
-        self.website_login('jannos1999@wp.pl', 'hackme1111')
-
     def test_wrong_password(self):
-        self.website_login('jannos1999@wp.pl', 'hackme2222')
+        self.website_login('jannos1999@wp.pl', 'password2222')
 
     def test_wrong_email_login(self):
-        self.website_login('aslkjdflka', 'hackme1111')
+        self.website_login('aslkjdflka', 'password1111')
 
 
 class Reddit(TestWebsite):
