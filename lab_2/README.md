@@ -1,5 +1,6 @@
 # Logowanie
 
+### Chrome, Opera, Safari
 
 ## 9gag.com 
 * nieistniejący email
