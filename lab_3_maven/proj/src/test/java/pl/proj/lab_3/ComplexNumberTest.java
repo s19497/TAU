@@ -1,4 +1,4 @@
-package pl.proj;
+package pl.proj.lab_3;
 
 import org.junit.jupiter.api.*;
 

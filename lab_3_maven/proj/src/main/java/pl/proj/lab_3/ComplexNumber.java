@@ -1,6 +1,4 @@
-package pl.proj;
-
-import javax.naming.PartialResultException;
+package pl.proj.lab_3;
 
 public class ComplexNumber {
     public final double real;
