@@ -38,4 +38,12 @@ describe 'weather-api' do
       expect(response_json['temperature']).to be_empty
     end
   end
+
+  describe 'no city' do
+    response = Faraday.get BASE_URL
+
+    it 'response status should be 404' do
+      expect(response.status).to eq 404
+    end
+  end
 end
