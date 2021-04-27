@@ -14,8 +14,4 @@ class MyClass:
         if driver_options is None:
             return
 
-        print([key + ' ' + value for key, value in driver_options.items() if key in options])
-
-
-the_class = MyClass(LinuxDriver)
-the_class.helper('ls -l')
+        return ', '.join([key + ' ' + value for key, value in driver_options.items() if key in options])
