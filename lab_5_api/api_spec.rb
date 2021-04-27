@@ -17,7 +17,7 @@ describe 'when you request weather forecast from weather-api' do
     end
 
     it 'has a response containing certain keys' do
-      expect(response_json.keys).to eq RESPONSE_KEYS
+      expect(response_json.keys).to match_array RESPONSE_KEYS
     end
   end
 
@@ -29,7 +29,7 @@ describe 'when you request weather forecast from weather-api' do
     end
 
     it 'responses with certain keys' do
-      expect(response_json.keys).to eq RESPONSE_KEYS
+      expect(response_json.keys).to match_array RESPONSE_KEYS
     end
 
     it 'responses with empty temperature' do
