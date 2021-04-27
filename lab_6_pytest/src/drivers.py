@@ -7,15 +7,14 @@ class MyDriver:
 class WindowsDriver(MyDriver):
     commands = {
         'dir': {
-            '-l': 'lista ze szczegolami',
-            '-a': 'ukryte elementy'
+            '/l': 'lista ze szczegolami',
+            '/a': 'ukryte elementy'
         },
         'ipconfig': {
-            '-b': 'krowa jest cryborgiem',
-            '-d': 'krowa jest martwa'
+            '/all': 'wszysciusienko',
+            '/?': 'komunikat pomocy'
         },
     }
-
 
 class LinuxDriver(MyDriver):
     commands = {
@@ -27,4 +26,9 @@ class LinuxDriver(MyDriver):
             '-b': 'krowa jest cryborgiem',
             '-d': 'krowa jest martwa'
         },
+        'sl': {
+            '-a': 'ludzie krzycza',
+            '-l': 'mniejsza wersja',
+            '-F': 'lata'
+        }
     }
