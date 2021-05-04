@@ -15,3 +15,10 @@ class MyClass:
             return
 
         return ', '.join([key + ' ' + value for key, value in driver_options.items() if key in options])
+
+    @staticmethod
+    def fib(n):
+        a, b = 0, 1
+        for i in range(n):
+            a, b = b, a + b
+        return a
