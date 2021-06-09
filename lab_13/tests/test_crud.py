@@ -36,7 +36,7 @@ def test_create():
     params = ['jan@jan.jan', 'jan kowalski', 's19']
     crud.create(*params)
 
-    user = list(cur.execute('select * from student'))[0]
+    user = cur.execute('select * from student').fetchone()
     assert user[1] == params[0]
 
 
@@ -51,12 +51,10 @@ def test_update(student_1, student_2):
     updated_student = cur.execute('select * from student where id = ?', (student_1[0],)).fetchone()
     assert updated_student[1] == 'email@email.email'
     assert updated_student[3] == student_1[3]
-    # updated_student = cur.execute('select * from student where id = ?', (student_2[0],))
 
 
 def test_delete(student_1, student_2):
-    crud.delete(2)
+    crud.delete(student_2[0])
     students = list(cur.execute('select * from student'))
     assert len(students) == 1
     assert students[0][1] == 'jan@jan.jan'
-    # create_params = ['jan@jan.jan', 'jan kowalski', 's19']
