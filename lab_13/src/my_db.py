@@ -12,13 +12,11 @@ class MyDb:
         return self.cursor.fetchone()[0] == 1
 
     def reset_db(self):
-        self.cursor.execute('drop table student')
+        if self.table_exists():
+            self.cursor.execute('drop table student')
         self.create_db()
 
     def create_db(self):
-        if self.table_exists():
-            return
-            # self.cursor.execute('drop table student')
         self.cursor.execute('''create table student (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             email TEXT UNIQUE,

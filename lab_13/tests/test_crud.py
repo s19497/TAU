@@ -40,9 +40,10 @@ def test_create():
     assert user[1] == params[0]
 
 
-def test_read(student_1):
+def test_read(student_1, student_2):
     students = crud.read()
-    assert len(students) == 1
+    assert len(students) == 2
+    assert students[1][1] == student_2[1]
 
 
 def test_update(student_1, student_2):
