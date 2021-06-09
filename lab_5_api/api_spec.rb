@@ -1,13 +1,23 @@
+# frozen_string_literal: true
+
 require 'json'
 require 'faraday'
 require 'net/http'
+require 'logger'
 
-BASE_URL = 'https://goweather.herokuapp.com/weather/'.freeze
-RESPONSE_KEYS = %w[temperature wind description forecast].freeze
+logger = Logger.new($stdout)
 
-describe 'when you request weather forecast from weather-api' do
+BASE_URL = 'https://goweather.herokuapp.com/weather/'
+
+logger.debug("Testing #{BASE_URL}")
+
+RSpec.describe 'when you request weather forecast from weather-api' do
   let(:response) { Faraday.get url }
   let(:response_json) { JSON.parse(response.body) }
+
+  let(:response_keys) { %w[temperature wind description forecast] }
+
+  before { logger.info("requesting #{url}") }
 
   context 'when you include real city' do
     let(:url) { "#{BASE_URL}gdansk" }
@@ -17,7 +27,8 @@ describe 'when you request weather forecast from weather-api' do
     end
 
     it 'has a response containing certain keys' do
-      expect(response_json.keys).to match_array RESPONSE_KEYS
+      logger.warn('Watch out! It\'s windy out there') if response_json['wind'].to_i > 10
+      expect(response_json.keys).to match_array response_keys
     end
   end
 
@@ -29,7 +40,7 @@ describe 'when you request weather forecast from weather-api' do
     end
 
     it 'responses with certain keys' do
-      expect(response_json.keys).to match_array RESPONSE_KEYS
+      expect(response_json.keys).to match_array response_keys
     end
 
     it 'responses with empty temperature' do
